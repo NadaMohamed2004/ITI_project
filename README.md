@@ -45,6 +45,5 @@ This is a simple fashion store web application that allows users to browse produ
 ## Contributing
 Feel free to fork this repository and submit pull requests for improvements.
 
-## License
-This project is licensed under the MIT License.
+
 
