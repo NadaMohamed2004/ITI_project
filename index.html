@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Store</title>
+    <link rel="stylesheet" href="E:\iti_oneday\session8\css\style.css">
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .product-list { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
+        .product { border: 1px solid #ddd; padding: 10px; border-radius: 5px; }
+        .product img { width: 150px; height: auto; border-radius: 10px; cursor: pointer; }
+        #cart { margin-top: 20px; padding: 10px; border: 1px solid #000; display: inline-block; }
+        .checkout-form { display: none; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Fashion Store</h1>
+
+    <section id="products">
+        <h2>Dresses</h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="E:\iti_oneday\session8\photos\n5.jpg" alt="Dress 1">
+                <p>Price: $2250</p>
+                <input type="number" value="1" min="1" class="quantity">
+                <button onclick="addToCart('Dress 1', 2250, this)">Buy Now</button>
+            </div>
+            <div class="product">
+                <img src="E:\iti_oneday\session8\photos\new.jpg" alt="Dress 2">
+                <p>Price: $700</p>
+                <input type="number" value="1" min="1" class="quantity">
+                <button onclick="addToCart('Dress 2', 700, this)">Buy Now</button>
+            </div>
+            <div class="product">
+                <img src="E:\iti_oneday\session8\photos\n4.jpg" alt="Dress 3">
+                <p>Price: $2750</p>
+                <input type="number" value="1" min="1" class="quantity">
+                <button onclick="addToCart('Dress 3', 2750, this)">Buy Now</button>
+            </div>
+            <div class="product">
+                <img src="E:\iti_oneday\session8\photos\new3.jpg" alt="Dress 4">
+                <p>Price: $900</p>
+                <input type="number" value="1" min="1" class="quantity">
+                <button onclick="addToCart('Dress 4', 900, this)">Buy Now</button>
+            </div>
+            <div class="product">
+                <img src="E:\iti_oneday\session8\photos\new2.jpg" alt="Dress 5">
+                <p>Price: $1500</p>
+                <input type="number" value="1" min="1" class="quantity">
+                <button onclick="addToCart('Dress 5', 1500, this)">Buy Now</button>
+            </div>
+        </div>
+
+        <h2>Blouses</h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="E:\iti_oneday\session8\photos\WhatsApp Image 2025-02-10 at 19.48.38_fef56757.jpg">
+                <p>Price: $990</p>
+                <input type="number" value="1" min="1" class="quantity">
+                <button onclick="addToCart('Blouse 1', 990, this)">Buy Now</button>
+            </div>
+            <div class="product">
+                <img src="E:\iti_oneday\session8\photos\nnb.jpg" alt="Blouse 2">
+                <p>Price: $850</p>
+                <input type="number" value="1" min="1" class="quantity">
+                <button onclick="addToCart('Blouse 2', 850, this)">Buy Now</button>
+            </div>
+            <div class="product">
+                <img src="E:\iti_oneday\session8\photos\nnb2.jpg" alt="Blouse 3">
+                <p>Price: $950</p>
+                <input type="number" value="1" min="1" class="quantity">
+                <button onclick="addToCart('Blouse 3', 950, this)">Buy Now</button>
+            </div>
+            <div class="product">
+                <img src="E:\iti_oneday\session8\photos\b4.webp" alt="Blouse 4">
+                <p>Price: $999</p>
+                <input type="number" value="1" min="1" class="quantity">
+                <button onclick="addToCart('Blouse 4', 999, this)">Buy Now</button>
+            </div>
+            <div class="product">
+                <img src="E:\iti_oneday\session8\photos\bn.jpg" alt="Blouse 5">
+                <p>Price: $750</p>
+                <input type="number" value="1" min="1" class="quantity">
+                <button onclick="addToCart('Blouse 5', 750, this)">Buy Now</button>
+            </div>
+        </div>
+
+        <h2>Sandals</h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="E:\iti_oneday\session8\photos\sandalone.webp" alt="Sandal 1">
+                <p>Price: $970</p>
+                <input type="number" value="1" min="1" class="quantity">
+                <button onclick="addToCart('Sandal 1', 970, this)">Buy Now</button>
+            </div>
+            <div class="product">
+                <img src="E:\iti_oneday\session8\photos\san2.webp" alt="Sandal 2">
+                <p>Price: $990</p>
+                <input type="number" value="1" min="1" class="quantity">
+                <button onclick="addToCart('Sandal 2', 990, this)">Buy Now</button>
+            </div>
+            <div class="product">
+                <img src="E:\iti_oneday\session8\photos\san3.webp" alt="Sandal 3">
+                <p>Price: $1350</p>
+                <input type="number" value="1" min="1" class="quantity">
+                <button onclick="addToCart('Sandal 3', 1350, this)">Buy Now</button>
+            </div>
+        </div>
+    </section>
+    
+    <div id="cart">
+        <h3>Shopping Cart</h3>
+        <ul id="cart-items"></ul>
+        <h3>Total Price: $<span id="total-price">0.00</span></h3>
+        <button onclick="checkout()">Checkout</button>
+    </div>
+
+    <div class="checkout-form" id="checkout-form">
+        <h2>Checkout</h2>
+        <input type="text" id="name" placeholder="Full Name" required><br>
+        <input type="text" id="address" placeholder="Address" required><br>
+        <input type="text" id="credit-card" placeholder="Credit Card Number" required><br>
+        <button onclick="processOrder()">Submit Order</button>
+    </div>
+    
+    <script>
+        let cart = [];
+        let totalPrice = 0;
+
+        function addToCart(product, price, button) {
+            let quantity = button.previousElementSibling.value;
+            let item = { product, price, quantity: parseInt(quantity) };
+            cart.push(item);
+            totalPrice += item.price * item.quantity;
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartItems = document.getElementById("cart-items");
+            cartItems.innerHTML = "";
+            cart.forEach(item => {
+                let li = document.createElement("li");
+                li.textContent = `${item.product} x${item.quantity} - $${item.price * item.quantity}`;
+                cartItems.appendChild(li);
+            });
+            document.getElementById("total-price").textContent = totalPrice.toFixed(2);
+        }
+
+        function checkout() {
+            document.getElementById("checkout-form").style.display = "block";
+        }
+
+        function processOrder() {
+            let name = document.getElementById("name").value;
+            let address = document.getElementById("address").value;
+            let creditCard = document.getElementById("credit-card").value;
+            if (name && address && creditCard) {
+                alert(`Order placed successfully!\nName: ${name}\nAddress: ${address}\nTotal: $${totalPrice.toFixed(2)}`);
+                cart = [];
+                totalPrice = 0;
+                updateCart();
+                document.getElementById("checkout-form").style.display = "none";
+            } else {
+                alert("Please fill all fields");
+            }
+        }
+    </script>
+        <script src="E:\iti_oneday\session8\css\index.js"></script>
+</body>
+</html>
